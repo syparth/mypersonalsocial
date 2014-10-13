@@ -1,0 +1,39 @@
+package com.self.personal.social;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan("com.self.personal.social")
+public class WebAppConfig {
+
+	/**
+	 * This method name does not matter. Important is it should return InternalResourceViewResolver.
+	 * @return @InternalResourceViewResolver
+	 */
+	@Bean
+	public InternalResourceViewResolver setupViewResolver(){
+		InternalResourceViewResolver irvr = new InternalResourceViewResolver();
+		System.out.println("Initializing Interna resource view resolver");
+		irvr.setPrefix("/WEB-INF/views/");
+		irvr.setSuffix(".jsp");
+		irvr.setViewClass(JstlView.class);
+		return irvr;
+	}
+	
+	 @Bean  
+	    public UrlBasedViewResolver setupViewResolver1() {  
+	        UrlBasedViewResolver resolver = new UrlBasedViewResolver();  
+	        System.out.println("Initializing UrlBased resource view resolver");
+	        resolver.setPrefix("/WEB-INF/views/");  
+	        resolver.setSuffix(".jsp");  
+	        resolver.setViewClass(JstlView.class);  
+	        return resolver;  
+	    }  
+}
